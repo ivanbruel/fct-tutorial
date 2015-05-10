@@ -30,21 +30,25 @@ public class NotificationsHelper {
     }
 
     public void requestPushToken(final Callback callback) {
-        new SimpleAsyncTask(new Runnable() {
-            @Override
-            public void run() {
-                GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(mContext);
-                try {
-                    String pushToken = gcm.register(mGCMSenderId);
-                    if (pushToken != null) {
-                        callback.onSuccess(pushToken);
+        if (hasGooglePlayServices()) {
+            new SimpleAsyncTask(new Runnable() {
+                @Override
+                public void run() {
+                    GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(mContext);
+                    try {
+                        String pushToken = gcm.register(mGCMSenderId);
+                        if (pushToken != null) {
+                            callback.onSuccess(pushToken);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        callback.onFailure(e);
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    callback.onFailure(e);
                 }
-            }
-        }).execute();
+            }).execute();
+        } else {
+            callback.onFailure(new IOException("No Google Play Services"));
+        }
     }
 
     public interface Callback {
