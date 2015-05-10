@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'keystore'
+            keyPassword 'keystore'
+            storeFile file('C:/Users/Ivan/Dropbox/Faber/FCT/keystore.jks')
+            storePassword 'keystore'
+        }
+    }
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+    defaultConfig {
+        applicationId 'com.ivan.bruel.tutorial'
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // Retrocompatibility for Android
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    // Easy to use http library
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+    // maps
+    compile 'com.google.android.gms:play-services:7.3.0'
+    // barcode reader
+    compile 'com.journeyapps:zxing-android-embedded:3.0.0-beta2@aar'
+    compile 'com.google.zxing:core:3.2.0'
+}
