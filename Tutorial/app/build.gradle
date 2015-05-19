@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'keystore'
             keyPassword 'keystore'
-            storeFile file('C:/Users/Ivan/Dropbox/Faber/FCT/keystore.jks')
+            storeFile file('/Users/ivanbruel/Dropbox/Faber/FCT/keystore.jks')
             storePassword 'keystore'
         }
     }
@@ -29,6 +29,7 @@ android {
         }
     }
     productFlavors {
+
     }
 }
 

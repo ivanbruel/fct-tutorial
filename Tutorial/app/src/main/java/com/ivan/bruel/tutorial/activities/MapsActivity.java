@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -31,7 +30,7 @@ public class MapsActivity extends AppCompatActivity {
     }
 
     private void addMarkers() {
-        Marker fctMarker = map.addMarker(new MarkerOptions().position(FCT).title("FCT").snippet("FCT IS COOL").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+        Marker fctMarker = map.addMarker(new MarkerOptions().position(FCT).title("FCT").snippet("FCT IS COOL"));
         Marker costaMarker = map.addMarker(new MarkerOptions().position(COSTA).title("Costa da Caparica").snippet("Let's go to the beach?"));
         Marker ponteMarker = map.addMarker(new MarkerOptions().position(PONTE).title("Ponte 25 de Abril").snippet("I can see the traffic from here!"));
     }
